@@ -1,0 +1,11 @@
+# 上面那三个txt文件的位置
+#train: G:\UAV\code\ultralytics-8940a27bdb26895f09a1554514a9a46312aa89c3\ultralytics\yolo\v8\detect\VOCTrainVal\TrainVal_train.txt
+#val: G:\UAV\code\ultralytics-8940a27bdb26895f09a1554514a9a46312aa89c3\ultralytics\yolo\v8\detect\VOCTrainVal\TrainVal_val.txt
+#test: G:\UAV\code\ultralytics-8940a27bdb26895f09a1554514a9a46312aa89c3\ultralytics\yolo\v8\detect\VOCTest\test.txt
+train: G:/UAV/dataset/dataset1024/train.txt
+val: G:/UAV/dataset/dataset1024/val.txt
+# number of classes
+nc: 6  # 修改为自己的类别数量
+# class names
+# class names
+names: ["nest", "kite", "ballon",  "fire", "person", "monkey"]
