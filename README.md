@@ -1,262 +1,270 @@
-<div align="center">
-  <p>
-    <a href="https://ultralytics.com/yolov8" target="_blank">
-      <img width="100%" src="https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/banner-yolov8.png"></a>
-  </p>
 
-[English](README.md) | [简体中文](README.zh-CN.md)
-<br>
+# YOLOv8_BiFPN
 
-<div>
-    <a href="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yaml"><img src="https://github.com/ultralytics/ultralytics/actions/workflows/ci.yaml/badge.svg" alt="Ultralytics CI"></a>
-    <a href="https://zenodo.org/badge/latestdoi/264818686"><img src="https://zenodo.org/badge/264818686.svg" alt="YOLOv8 Citation"></a>
-    <a href="https://hub.docker.com/r/ultralytics/ultralytics"><img src="https://img.shields.io/docker/pulls/ultralytics/ultralytics?logo=docker" alt="Docker Pulls"></a>
-    <br>
-    <a href="https://console.paperspace.com/github/ultralytics/ultralytics"><img src="https://assets.paperspace.io/img/gradient-badge.svg" alt="Run on Gradient"/></a>
-    <a href="https://colab.research.google.com/github/ultralytics/ultralytics/blob/main/examples/tutorial.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"></a>
-    <a href="https://www.kaggle.com/ultralytics/yolov8"><img src="https://kaggle.com/static/images/open-in-kaggle.svg" alt="Open In Kaggle"></a>
-  </div>
-  <br>
+This repository contains the implementation of the paper titled "An End-to-End Foreign Object Detection on Transmission Lines from Drone-view Images." The project integrates YOLOv8 with a Bidirectional Feature Pyramid Network (BiFPN) to enhance the detection of foreign objects on power transmission lines from drone-view images.
 
-[Ultralytics](https://ultralytics.com) [YOLOv8](https://github.com/ultralytics/ultralytics) is a cutting-edge, state-of-the-art (SOTA) model that builds upon the success of previous YOLO versions and introduces new features and improvements to further boost performance and flexibility. YOLOv8 is designed to be fast, accurate, and easy to use, making it an excellent choice for a wide range of object detection and tracking, instance segmentation, image classification and pose estimation tasks.
+## Overview
 
-We hope that the resources here will help you get the most out of YOLOv8. Please browse the YOLOv8 <a href="https://docs.ultralytics.com/">Docs</a> for details, raise an issue on <a href="https://github.com/ultralytics/ultralytics/issues/new/choose">GitHub</a> for support, and join our <a href="https://discord.gg/n6cFeSPZdD">Discord</a> community for questions and discussions!
+Foreign objects such as nests often lead to widespread power outages. Detecting foreign objects on transmission lines is crucial, but manual detection is time-consuming and labor-intensive. This project aims to provide an automated, efficient solution using advanced deep learning techniques.
 
-To request an Enterprise License please complete the form at [Ultralytics Licensing](https://ultralytics.com/license).
+## Features
 
-<img width="100%" src="https://raw.githubusercontent.com/ultralytics/assets/main/yolov8/yolo-comparison-plots.png"></a>
+- **YOLOv8_BiFPN**: An enhanced version of YOLOv8 with Bidirectional Feature Pyramid Network for improved multi-scale feature fusion.
+- **FOTL_Drone Dataset**: A comprehensive dataset containing 1,495 annotated images of 6 types of foreign objects on transmission lines, captured from drone perspectives.
 
-<div align="center">
-  <a href="https://github.com/ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png" width="2%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="2%" alt="" />
-  <a href="https://www.linkedin.com/company/ultralytics/" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png" width="2%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="2%" alt="" />
-  <a href="https://twitter.com/ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png" width="2%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="2%" alt="" />
-  <a href="https://youtube.com/ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="2%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="2%" alt="" />
-  <a href="https://www.tiktok.com/@ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png" width="2%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="2%" alt="" />
-  <a href="https://www.instagram.com/ultralytics/" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-instagram.png" width="2%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="2%" alt="" />
-  <a href="https://discord.gg/n6cFeSPZdD" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/blob/main/social/logo-social-discord.png" width="2%" alt="" /></a>
-</div>
-</div>
+## Results
 
-## <div align="center">Documentation</div>
+Our proposed YOLOv8_BiFPN model achieves:
+- Average Precision (AP): 90.2%
+- Mean Average Precision (mAP@.50): 0.896
 
-See below for a quickstart installation and usage example, and see the [YOLOv8 Docs](https://docs.ultralytics.com) for full documentation on training, validation, prediction and deployment.
+Here is the comparision with other networks:
 
-<details open>
-<summary>Install</summary>
+![Comparision Image](img/comparision.png)
 
-Pip install the ultralytics package including all [requirements](https://github.com/ultralytics/ultralytics/blob/main/requirements.txt) in a [**Python>=3.7**](https://www.python.org/) environment with [**PyTorch>=1.7**](https://pytorch.org/get-started/locally/).
+Here is the detection result of our YOLOv8-BiFPN:
 
-```bash
-pip install ultralytics
+![Detection Result Image](img/detect_result.png)
+
+## Installation
+
+### Prerequisites
+
+- Python 3.8+
+- PyTorch 2.0
+- CUDA 11.8 (for GPU support)
+- Other dependencies listed in `requirements.txt`
+
+### Steps
+
+1. **Clone the repository**:
+   ```sh
+   git clone https://github.com/Changping-Li/YOLOv8_BiFPN.git
+   cd YOLOv8_BiFPN
+   ```
+
+2. **Install dependencies**:
+   ```sh
+   pip install -r requirements.txt
+   ```
+
+3. **Prepare the dataset**:
+   Download and place the FOTL_Drone dataset in the `yolo/data/` directory.
+
+## Usage
+
+### Training
+
+To train the YOLOv8_BiFPN model:
+```sh
+python ultralytics/yolo/v8/detect/train.py --config ultralytics/models/v8/yolov8-BiFPN-final.yaml
 ```
 
-</details>
+### Evaluation
 
-<details open>
-<summary>Usage</summary>
-
-#### CLI
-
-YOLOv8 may be used directly in the Command Line Interface (CLI) with a `yolo` command:
-
-```bash
-yolo predict model=yolov8n.pt source='https://ultralytics.com/images/bus.jpg'
+To evaluate the model:
+```sh
+python ultralytics/yolo/v8/detect/predict.py 
 ```
 
-`yolo` can be used for a variety of tasks and modes and accepts additional arguments, i.e. `imgsz=640`. See the YOLOv8 [CLI Docs](https://docs.ultralytics.com/usage/cli) for examples.
+## File Structure
 
-#### Python
+The core code directory of YOLOv8 contains all the code that implements the model's functionality.
 
-YOLOv8 may also be used directly in a Python environment, and accepts the same [arguments](https://docs.ultralytics.com/usage/cfg/) as in the CLI example above:
+### 1 ultralytics/assets
 
-```python
-from ultralytics import YOLO
+    Contains the project's static resources, such as images, pre-trained model files, etc. These resources are used for testing, documentation, or software examples.
 
-# Load a model
-model = YOLO("yolov8n.yaml")  # build a new model from scratch
-model = YOLO("yolov8n.pt")  # load a pretrained model (recommended for training)
+### 2 ultralytics/yolo/cfg
 
-# Use the model
-model.train(data="coco128.yaml", epochs=3)  # train the model
-metrics = model.val()  # evaluate model performance on the validation set
-results = model("https://ultralytics.com/images/bus.jpg")  # predict on an image
-path = model.export(format="onnx")  # export the model to ONNX format
-```
+    Stores configuration files that define the model's structure, training parameters, etc.
 
-[Models](https://github.com/ultralytics/ultralytics/tree/main/ultralytics/models) download automatically from the latest Ultralytics [release](https://github.com/ultralytics/assets/releases). See YOLOv8 [Python Docs](https://docs.ultralytics.com/usage/python) for more examples.
+2.1 ultralytics/yolo/cfg/init.py
+    
+    The initialization file of the Python package, used to mark the current directory as part of the Python package. This allows the package's modules to be referenced by external code.
 
-</details>
+2.2 ultralytics/yolo/cfg/default.yaml
 
-## <div align="center">Models</div>
+    This is a YAML configuration file containing the default configuration settings for YOLOv8. These settings include training parameters, model options, data processing methods, etc.
 
-All YOLOv8 pretrained models are available here. Detect, Segment and Pose models are pretrained on the [COCO](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/datasets/coco.yaml) dataset, while Classify models are pretrained on the [ImageNet](https://github.com/ultralytics/ultralytics/blob/main/ultralytics/datasets/ImageNet.yaml) dataset.
+### 3 ultralytics/datasets
+    
+    This folder contains configuration files related to different datasets. These configuration files define how to load and preprocess datasets, the structure and attributes of the datasets, etc.
 
-[Models](https://github.com/ultralytics/ultralytics/tree/main/ultralytics/models) download automatically from the latest Ultralytics [release](https://github.com/ultralytics/assets/releases) on first use.
+### 4 ultralytics/yolo/data
+    
+    Contains scripts and files related to data processing, such as dataset configuration files or data preprocessing code. This is crucial for model training and testing.
 
-<details open><summary>Detection</summary>
+### 5 ultralytics/engine
+        
+    Contains the core functionality code of YOLOv8, such as model training, validation, and inference.
 
-See [Detection Docs](https://docs.ultralytics.com/tasks/detect/) for usage examples with these models.
+5.1 ultralytics/engine/init.py
+    
+    The initialization file of the Python package, used to mark the engine directory as a Python module.
 
-| Model                                                                                | size<br><sup>(pixels) | mAP<sup>val<br>50-95 | Speed<br><sup>CPU ONNX<br>(ms) | Speed<br><sup>A100 TensorRT<br>(ms) | params<br><sup>(M) | FLOPs<br><sup>(B) |
-| ------------------------------------------------------------------------------------ | --------------------- | -------------------- | ------------------------------ | ----------------------------------- | ------------------ | ----------------- |
-| [YOLOv8n](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n.pt) | 640                   | 37.3                 | 80.4                           | 0.99                                | 3.2                | 8.7               |
-| [YOLOv8s](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s.pt) | 640                   | 44.9                 | 128.4                          | 1.20                                | 11.2               | 28.6              |
-| [YOLOv8m](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m.pt) | 640                   | 50.2                 | 234.7                          | 1.83                                | 25.9               | 78.9              |
-| [YOLOv8l](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8l.pt) | 640                   | 52.9                 | 375.2                          | 2.39                                | 43.7               | 165.2             |
-| [YOLOv8x](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8x.pt) | 640                   | 53.9                 | 479.1                          | 3.53                                | 68.2               | 257.8             |
+5.2 ultralytics/engine/exporter.py
+    
+    Code responsible for exporting the model. This includes functionality for exporting the trained model to different formats (e.g., ONNX, TensorFlow, TorchScript, etc.).
 
-- **mAP<sup>val</sup>** values are for single-model single-scale on [COCO val2017](http://cocodataset.org) dataset.
-  <br>Reproduce by `yolo val detect data=coco.yaml device=0`
-- **Speed** averaged over COCO val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance.
-  <br>Reproduce by `yolo val detect data=coco128.yaml batch=1 device=0|cpu`
+5.3 ultralytics/engine/model.py
+    
+    Contains code for model construction and management. This involves defining the model architecture, loading model parameters, performing model inference, etc.
 
-</details>
+5.4 ultralytics/engine/predictor.py
 
-<details><summary>Segmentation</summary>
+    Implements model prediction functionality. This includes processing input data, performing model inference, returning prediction results, etc.
 
-See [Segmentation Docs](https://docs.ultralytics.com/tasks/segment/) for usage examples with these models.
+5.5 ultralytics/engine/results.py
+    
+    Used to handle and display model prediction results. This involves calculating performance metrics, generating result reports, etc.
 
-| Model                                                                                        | size<br><sup>(pixels) | mAP<sup>box<br>50-95 | mAP<sup>mask<br>50-95 | Speed<br><sup>CPU ONNX<br>(ms) | Speed<br><sup>A100 TensorRT<br>(ms) | params<br><sup>(M) | FLOPs<br><sup>(B) |
-| -------------------------------------------------------------------------------------------- | --------------------- | -------------------- | --------------------- | ------------------------------ | ----------------------------------- | ------------------ | ----------------- |
-| [YOLOv8n-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n-seg.pt) | 640                   | 36.7                 | 30.5                  | 96.1                           | 1.21                                | 3.4                | 12.6              |
-| [YOLOv8s-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-seg.pt) | 640                   | 44.6                 | 36.8                  | 155.7                          | 1.47                                | 11.8               | 42.6              |
-| [YOLOv8m-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m-seg.pt) | 640                   | 49.9                 | 40.8                  | 317.0                          | 2.18                                | 27.3               | 110.2             |
-| [YOLOv8l-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8l-seg.pt) | 640                   | 52.3                 | 42.6                  | 572.4                          | 2.79                                | 46.0               | 220.5             |
-| [YOLOv8x-seg](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8x-seg.pt) | 640                   | 53.4                 | 43.4                  | 712.1                          | 4.02                                | 71.8               | 344.1             |
+5.6 ultralytics/engine/trainer.py
 
-- **mAP<sup>val</sup>** values are for single-model single-scale on [COCO val2017](http://cocodataset.org) dataset.
-  <br>Reproduce by `yolo val segment data=coco.yaml device=0`
-- **Speed** averaged over COCO val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance.
-  <br>Reproduce by `yolo val segment data=coco128-seg.yaml batch=1 device=0|cpu`
+    Code responsible for model training. This includes setting up the training loop, optimizers, loss functions, etc.
 
-</details>
+5.7 ultralytics/engine/validator.py
 
-<details><summary>Classification</summary>
+    Implements model validation functionality. This includes running the model on the validation set, calculating and reporting performance metrics, etc.
 
-See [Classification Docs](https://docs.ultralytics.com/tasks/classify/) for usage examples with these models.
+### 6 ultralytics/hub
+    
+    Code integrated with PyTorch Hub, allowing users to easily download and use YOLOv8 models. This includes helper scripts for model loading and execution.
 
-| Model                                                                                        | size<br><sup>(pixels) | acc<br><sup>top1 | acc<br><sup>top5 | Speed<br><sup>CPU ONNX<br>(ms) | Speed<br><sup>A100 TensorRT<br>(ms) | params<br><sup>(M) | FLOPs<br><sup>(B) at 640 |
-| -------------------------------------------------------------------------------------------- | --------------------- | ---------------- | ---------------- | ------------------------------ | ----------------------------------- | ------------------ | ------------------------ |
-| [YOLOv8n-cls](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n-cls.pt) | 224                   | 66.6             | 87.0             | 12.9                           | 0.31                                | 2.7                | 4.3                      |
-| [YOLOv8s-cls](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-cls.pt) | 224                   | 72.3             | 91.1             | 23.4                           | 0.35                                | 6.4                | 13.5                     |
-| [YOLOv8m-cls](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m-cls.pt) | 224                   | 76.4             | 93.2             | 85.4                           | 0.62                                | 17.0               | 42.7                     |
-| [YOLOv8l-cls](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8l-cls.pt) | 224                   | 78.0             | 94.1             | 163.0                          | 0.87                                | 37.5               | 99.7                     |
-| [YOLOv8x-cls](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8x-cls.pt) | 224                   | 78.4             | 94.3             | 232.0                          | 1.01                                | 57.4               | 154.8                    |
+### 7 ultralytics/nn
+        
+    Contains code for neural network components, such as custom layers, activation functions, etc.
 
-- **acc** values are model accuracies on the [ImageNet](https://www.image-net.org/) dataset validation set.
-  <br>Reproduce by `yolo val classify data=path/to/ImageNet device=0`
-- **Speed** averaged over ImageNet val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance.
-  <br>Reproduce by `yolo val classify data=path/to/ImageNet batch=1 device=0|cpu`
+### 8 ultralytics/tracker
+        
+    Contains code related to object tracking. This supports tracking detected objects in videos or real-time streams.
 
-</details>
+### 9 ultralytics/yolo/utils
+    
+    Contains various utilities and helper functions, such as image processing, performance metric calculations, etc.
 
-<details><summary>Pose</summary>
+9.1 ultralytics/yolo/utils/callbacks
+    
+    Contains callback functions used during the training process. These functions are called at specific points during model training to log information such as training loss and learning rate.
 
-See [Pose Docs](https://docs.ultralytics.com/tasks/pose) for usage examples with these models.
+9.2 ultralytics/yolo/utils/init.py
+        
+    The initialization file of the utils directory, marking it as a Python module.
 
-| Model                                                                                                | size<br><sup>(pixels) | mAP<sup>pose<br>50-95 | mAP<sup>pose<br>50 | Speed<br><sup>CPU ONNX<br>(ms) | Speed<br><sup>A100 TensorRT<br>(ms) | params<br><sup>(M) | FLOPs<br><sup>(B) |
-| ---------------------------------------------------------------------------------------------------- | --------------------- | --------------------- | ------------------ | ------------------------------ | ----------------------------------- | ------------------ | ----------------- |
-| [YOLOv8n-pose](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8n-pose.pt)       | 640                   | 50.4                  | 80.1               | 131.8                          | 1.18                                | 3.3                | 9.2               |
-| [YOLOv8s-pose](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s-pose.pt)       | 640                   | 60.0                  | 86.2               | 233.2                          | 1.42                                | 11.6               | 30.2              |
-| [YOLOv8m-pose](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8m-pose.pt)       | 640                   | 65.0                  | 88.8               | 456.3                          | 2.00                                | 26.4               | 81.0              |
-| [YOLOv8l-pose](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8l-pose.pt)       | 640                   | 67.6                  | 90.0               | 784.5                          | 2.59                                | 44.4               | 168.6             |
-| [YOLOv8x-pose](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8x-pose.pt)       | 640                   | 69.2                  | 90.2               | 1607.1                         | 3.73                                | 69.4               | 263.2             |
-| [YOLOv8x-pose-p6](https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8x-pose-p6.pt) | 1280                  | 71.6                  | 91.2               | 4088.7                         | 10.04                               | 99.1               | 1066.4            |
+9.3 ultralytics/yolo/utils/autobatch.py
+        
+    Contains functionality for automatic batch processing, optimizing efficiency when handling large amounts of data.
 
-- **mAP<sup>val</sup>** values are for single-model single-scale on [COCO Keypoints val2017](http://cocodataset.org)
-  dataset.
-  <br>Reproduce by `yolo val pose data=coco-pose.yaml device=0`
-- **Speed** averaged over COCO val images using an [Amazon EC2 P4d](https://aws.amazon.com/ec2/instance-types/p4/) instance.
-  <br>Reproduce by `yolo val pose data=coco8-pose.yaml batch=1 device=0|cpu`
+9.4 ultralytics/yolo/utils/benchmarks.py
+        
+    Contains functions for performance benchmarking, used to evaluate the model's speed and efficiency.
 
-</details>
+9.5 ultralytics/yolo/utils/checks.py
+        
+    Provides functions for checking and validating data or model status.
 
-## <div align="center">Integrations</div>
+9.6 ultralytics/yolo/utils/dist.py
+        
+    Contains functionality related to distributed training, such as solving a bug in Python argparse during Distributed Data Parallel (DDP) training.
 
-<br>
-<a href="https://bit.ly/ultralytics_hub" target="_blank">
-<img width="100%" src="https://github.com/ultralytics/assets/raw/main/yolov8/banner-integrations.png"></a>
-<br>
-<br>
+9.7 ultralytics/yolo/utils/downloads.py
+        
+    Contains functions related to downloading, such as downloading pre-trained models or other resources.
 
-<div align="center">
-  <a href="https://roboflow.com/?ref=ultralytics">
-    <img src="https://github.com/ultralytics/assets/raw/main/partners/logo-roboflow.png" width="10%" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="15%" height="0" alt="" />
-  <a href="https://cutt.ly/yolov5-readme-clearml">
-    <img src="https://github.com/ultralytics/assets/raw/main/partners/logo-clearml.png" width="10%" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="15%" height="0" alt="" />
-  <a href="https://bit.ly/yolov8-readme-comet">
-    <img src="https://github.com/ultralytics/assets/raw/main/partners/logo-comet.png" width="10%" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="15%" height="0" alt="" />
-  <a href="https://bit.ly/yolov5-neuralmagic">
-    <img src="https://github.com/ultralytics/assets/raw/main/partners/logo-neuralmagic.png" width="10%" /></a>
-</div>
+9.8 ultralytics/yolo/utils/errors.py
+        
+    Defines custom errors and exception handling functions.
 
-|                                                           Roboflow                                                           |                                                            ClearML ⭐ NEW                                                            |                                                                        Comet ⭐ NEW                                                                        |                                           Neural Magic ⭐ NEW                                           |
-| :--------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------: |
-| Label and export your custom datasets directly to YOLOv8 for training with [Roboflow](https://roboflow.com/?ref=ultralytics) | Automatically track, visualize and even remotely train YOLOv8 using [ClearML](https://cutt.ly/yolov5-readme-clearml) (open-source!) | Free forever, [Comet](https://bit.ly/yolov8-readme-comet) lets you save YOLOv8 models, resume training, and interactively visualize and debug predictions | Run YOLOv8 inference up to 6x faster with [Neural Magic DeepSparse](https://bit.ly/yolov5-neuralmagic) |
+9.9 ultralytics/yolo/utils/files.py
+        
+    Contains functions related to file operations, such as reading and writing files.
 
-## <div align="center">Ultralytics HUB</div>
+9.10 ultralytics/yolo/utils/instance.py
+        
+    Contains functions related to instances (objects), used for handling operations on a single model instance.
 
-Experience seamless AI with [Ultralytics HUB](https://bit.ly/ultralytics_hub) ⭐, the all-in-one solution for data visualization, YOLOv5 and YOLOv8 🚀 model training and deployment, without any coding. Transform images into actionable insights and bring your AI visions to life with ease using our cutting-edge platform and user-friendly [Ultralytics App](https://ultralytics.com/app_install). Start your journey for **Free** now!
+9.11 ultralytics/yolo/utils/loss.py
+        
+    Contains definitions and implementations of loss functions, which are crucial for the training process.
 
-<a href="https://bit.ly/ultralytics_hub" target="_blank">
-<img width="100%" src="https://github.com/ultralytics/assets/raw/main/im/ultralytics-hub.png"></a>
+9.12 ultralytics/yolo/utils/metrics.py
+    
+    Contains functions for calculating and reporting performance metrics.
 
-## <div align="center">Contribute</div>
+9.13 ultralytics/yolo/utils/ops.py
+        
+    Contains various operations and functions.
 
-We love your input! YOLOv5 and YOLOv8 would not be possible without help from our community. Please see our [Contributing Guide](https://docs.ultralytics.com/help/contributing) to get started, and fill out our [Survey](https://ultralytics.com/survey?utm_source=github&utm_medium=social&utm_campaign=Survey) to send us feedback on your experience. Thank you 🙏 to all our contributors!
+9.14 ultralytics/yolo/utils/patches.py
+        
+    Contains code patches related to fixing or improving existing functionality.
 
-<!-- SVG image from https://opencollective.com/ultralytics/contributors.svg?width=990 -->
+9.15 ultralytics/yolo/utils/plotting.py
+        
+    Provides data visualization functions, such as plotting graphs.
 
-<a href="https://github.com/ultralytics/yolov5/graphs/contributors">
-<img width="100%" src="https://github.com/ultralytics/assets/raw/main/im/image-contributors.png"></a>
+9.16 ultralytics/yolo/utils/tal.py
+        
+    Contains tools and functions for specific application logic.
 
-## <div align="center">License</div>
+9.17 ultralytics/yolo/utils/torch_utils.py
+        
+    Contains helper functions related to the PyTorch framework.
 
-YOLOv8 is available under two different licenses:
+9.18 ultralytics/yolo/utils/triton.py
+        
+    Contains functionality for integrating with NVIDIA Triton inference server.
 
-- **AGPL-3.0 License**: See [LICENSE](https://github.com/ultralytics/ultralytics/blob/main/LICENSE) file for details.
-- **Enterprise License**: Provides greater flexibility for commercial product development without the open-source requirements of AGPL-3.0. Typical use cases are embedding Ultralytics software and AI models in commercial products and applications. Request an Enterprise License at [Ultralytics Licensing](https://ultralytics.com/license).
+9.19 ultralytics/yolo/utils/tuner.py
+        
+    Provides functionality for model tuning and hyperparameter search.
 
-## <div align="center">Contact</div>
+### 10 ultralytics/init.py
+    The initialization file of the Python package, marking the current directory as part of the Python package.
 
-For YOLOv8 bug reports and feature requests please visit [GitHub Issues](https://github.com/ultralytics/ultralytics/issues), and join our [Discord](https://discord.gg/n6cFeSPZdD) community for questions and discussions!
+These directories and files collectively form the foundation of YOLOv8, from data processing and model configuration to the actual training and inference engine, as well as utility tools and advanced functionalities. Each component plays a crucial role in the overall functionality and performance of the framework.
 
-<br>
-<div align="center">
-  <a href="https://github.com/ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-github.png" width="3%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="" />
-  <a href="https://www.linkedin.com/company/ultralytics/" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-linkedin.png" width="3%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="" />
-  <a href="https://twitter.com/ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-twitter.png" width="3%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="" />
-  <a href="https://youtube.com/ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-youtube.png" width="3%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="" />
-  <a href="https://www.tiktok.com/@ultralytics" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-tiktok.png" width="3%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="" />
-  <a href="https://www.instagram.com/ultralytics/" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/raw/main/social/logo-social-instagram.png" width="3%" alt="" /></a>
-  <img src="https://github.com/ultralytics/assets/raw/main/social/logo-transparent.png" width="3%" alt="" />
-  <a href="https://discord.gg/n6cFeSPZdD" style="text-decoration:none;">
-    <img src="https://github.com/ultralytics/assets/blob/main/social/logo-social-discord.png" width="3%" alt="" /></a>
-</div>
+
+## Methodology
+
+### YOLOv8_BiFPN Architecture
+
+In the task of using drones to detect foreign objects on transmission lines, there are often complex and variable environmental conditions such as weather, lighting, and background interference. The linear structure of power lines and the diversity of foreign objects increase the difficulty of detection.
+
+**Bidirectional Feature Pyramid Network (BiFPN)**: 
+- Enhances the performance of target detection by introducing a BiFPN structure into the detection head of YOLOv8.
+- BiFPN is integrated during the process of connecting three layers of the network to form the detection head.
+- This structure enhances multi-scale feature fusion and bidirectional information transmission, allowing the network to adapt better to complex environmental conditions and diverse target morphologies.
+
+**Loss Functions**:
+- **Classification Loss**: Binary Cross-Entropy (BCE) is employed as the classification loss.
+- **Regression Loss**: The regression branch employs Distribution Focal Loss (DFL) and CIoU Loss for bounding box optimization.
+
+Here is the architecture of our YOLOv8-BiFPN:
+
+![Architecture Image](img/architecture.png)
+
+## Dataset
+
+**FOTL_Drone**:
+- A dataset of foreign objects on transmission lines from drone perspective.
+- Comprises a total of 1,495 annotated images, capturing six types of foreign objects (nest, kite, balloon, fire, person, monkey).
+- Images sourced from Google, Bing, Baidu, Sogou, YouTube, Bilibili, and drone inspections.
+- Annotations saved in XML format following the PASCAL VOC standard, supporting YOLO format.
+- Split into training (1,196 images) and testing (299 images) sets.
+
+Here is the example image of our dataset:
+
+![Dataset Image](img/dataset.png)
+
+## Contribution
+
+We welcome contributions from the community. Please feel free to submit pull requests or open issues for any bugs or feature requests.
+
+## Acknowledgments
+
+This work is supported by various grants and institutions, including the Basic Research Programs of Taicang, the Guangdong Key Laboratory of Intelligent Information Processing, and the National Natural Science Foundation of China.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
