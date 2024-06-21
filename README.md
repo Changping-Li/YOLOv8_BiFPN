@@ -49,7 +49,7 @@ Here is the detection result of our YOLOv8-BiFPN:
    ```
 
 3. **Prepare the dataset**:
-   Download and place the FOTL_Drone dataset in the `yolo/data/` directory.
+   Download and place the FOTL_Drone dataset in the `ultralytics/yolo/data/` directory.
 
 ## Usage
 
@@ -222,7 +222,7 @@ The core code directory of YOLOv8 contains all the code that implements the mode
 ### 10 ultralytics/init.py
     The initialization file of the Python package, marking the current directory as part of the Python package.
 
-These directories and files collectively form the foundation of YOLOv8, from data processing and model configuration to the actual training and inference engine, as well as utility tools and advanced functionalities. Each component plays a crucial role in the overall functionality and performance of the framework.
+These directories and files collectively form the foundation of YOLOv8-BiFPN, from data processing and model configuration to the actual training and inference engine, as well as utility tools and advanced functionalities. Each component plays a crucial role in the overall functionality and performance of the framework.
 
 
 ## Methodology
@@ -264,7 +264,3 @@ We welcome contributions from the community. Please feel free to submit pull req
 ## Acknowledgments
 
 This work is supported by various grants and institutions, including the Basic Research Programs of Taicang, the Guangdong Key Laboratory of Intelligent Information Processing, and the National Natural Science Foundation of China.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
