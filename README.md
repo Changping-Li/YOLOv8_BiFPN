@@ -257,7 +257,7 @@ In the task of using drones to detect foreign objects on transmission lines, the
 
 Here is the example image of our dataset:
 
-![Dataset Image](img/dataset.png)
+![Dataset Image](img/六类隐患目标.png)
 
 ## Contribution
 
