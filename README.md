@@ -29,7 +29,7 @@ Here is the comparision with other networks:
 
 Here is the detection result of our YOLOv8-BiFPN:
 
-![Detection Result Image](img/detect_result.png)
+![Detection Result Image](img/YOLO-BiFPN隐患目标检测.png)
 
 ## Installation
 
