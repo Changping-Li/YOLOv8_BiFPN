@@ -24,7 +24,7 @@ Our proposed YOLOv8_BiFPN model achieves:
 
 Here is the comparision with other networks:
 
-![Comparision Image](img/comparision.png)
+![Comparision Image](img/检测结果量化对比.png)
 ![Comparision Image](img/隐患目标检测对比.png)
 
 Here is the detection result of our YOLOv8-BiFPN:
