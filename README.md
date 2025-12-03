@@ -7,6 +7,10 @@ This repository contains the implementation of the paper titled "An End-to-End F
 
 Foreign objects such as nests often lead to widespread power outages. Detecting foreign objects on transmission lines is crucial, but manual detection is time-consuming and labor-intensive. This project aims to provide an automated, efficient solution using advanced deep learning techniques.
 
+Here is the architecture of our YOLOv8-BiFPN:
+
+![Architecture Image](img/YOLO-BiFPN.png)
+
 ## Features
 
 - **YOLOv8_BiFPN**: An enhanced version of YOLOv8 with Bidirectional Feature Pyramid Network for improved multi-scale feature fusion.
@@ -240,9 +244,6 @@ In the task of using drones to detect foreign objects on transmission lines, the
 - **Classification Loss**: Binary Cross-Entropy (BCE) is employed as the classification loss.
 - **Regression Loss**: The regression branch employs Distribution Focal Loss (DFL) and CIoU Loss for bounding box optimization.
 
-Here is the architecture of our YOLOv8-BiFPN:
-
-![Architecture Image](img/architecture.png)
 
 ## Dataset
 
